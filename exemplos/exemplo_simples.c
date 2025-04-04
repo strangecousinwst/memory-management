@@ -27,7 +27,7 @@ typedef struct Pessoa {
 int main()
 {
     // Inicializa o coletor de lixo com 1MB de heap
-    gc_t *gc = gc_iniciar(1024 * 1024);
+    gc_t *gc = gc_inicializar(1024 * 1024);
     if (!gc) {
         fprintf(stderr, "Erro ao inicializar o coletor de lixo.\n");
         return 1;
@@ -74,7 +74,7 @@ int main()
     printf("Coleta de lixo realizada. Bytes libertados: %zu\n", bytes_libertados);
 
     // Mostrar estatisticas apos a coleta
-    gc_obter_estatisticas(gc, &total_alocado, &total_livre, &num_objetos);
+    gc_estatisticas(gc, &total_alocado, &total_livre, &num_objetos);
     printf("Estatisticas apos a coleta:\n");
     printf("Total alocado: %zu bytes\n", total_alocado);
     printf("Total livre: %zu bytes\n", total_livre);
