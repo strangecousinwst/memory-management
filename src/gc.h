@@ -1,6 +1,6 @@
 /**
  * @file gc.h
- * @brief Definições dos métodos públicos do coletor de lixo.
+ * @brief Definições públicas do coletor de lixo.
  *
  * Este arquivo contém a API pública para o coletor de lixo implementado em C.
  * O coletor utiliza o algoritmo mark-and-sweep.
@@ -12,7 +12,6 @@
 #ifndef GC_H
 #define GC_H
 
-#include <cstddef>
 #include <stddef.h>
 
 /**
