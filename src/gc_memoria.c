@@ -25,7 +25,7 @@
  * @param novo_tamanho Novo tamanho desejado em bytes.
  * @return Apontador para a memoria realocada ou NULL em caso de falha.
  */
-void gc_realocar(gc_t *gc, void *ptr, size_t novo_tamanho) {
+void* gc_realocar(gc_t *gc, void *ptr, size_t novo_tamanho) {
   if (!gc) {
     return NULL; // Erro: coletor nulo
   }
