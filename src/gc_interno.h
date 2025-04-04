@@ -73,7 +73,7 @@ typedef struct GC {
   gc_object_t *objetos;
   void *raizes[GC_MAX_RAIZES];
   size_t num_raizes;
-  gc_referencia_t *referências[GC_MAX_REFERENCIAS];
+  gc_referencia_t referencias[GC_MAX_REFERENCIAS];
   size_t num_referencias;
   size_t tamanho_heap;
   size_t memoria_usada;

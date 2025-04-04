@@ -20,7 +20,7 @@
  * Esta estrutura contém todos os dados necessários para o funcionamento
  * do coletor de lixo.
  */
-typedef struct GC GC;
+typedef struct GC gc_t;
 
 /**
  * @brief Estrutura que representa o objecto gerenciado pelo coletor de lixo.
@@ -28,7 +28,7 @@ typedef struct GC GC;
  * Esta estrutura é usada para manter informações sobre os objectos
  * alocados e gerenciados pelo coletor de lixo.
  */
-typedef struct GCObject GCObject;
+typedef struct GCObject gc_object_t;
 
 /**
  * @brief Estrutura que representa o objecto gerenciado pelo coletor de lixo.
@@ -36,7 +36,7 @@ typedef struct GCObject GCObject;
  * Esta estrutura é usada para manter informações sobre os objectos
  * alocados e gerenciados pelo coletor de lixo.
  */
-GC *gc_inicializar(size_t tamanho_heap);
+gc_t *gc_inicializar(size_t tamanho_heap);
 
 /**
  * @brief Aloca memória gerenciada pelo coletor de lixo.
@@ -45,7 +45,7 @@ GC *gc_inicializar(size_t tamanho_heap);
  * @param tamanho_heap Tamanho da memoria a ser alocada em bytes.
  * @return Apontador para a memoria alocada, ou NULL em caso de falha.
  */
-void *gc_alocar(GC *gc, size_t tamanho_heap);
+void *gc_alocar(gc_t *gc, size_t tamanho_heap);
 
 /**
  * @brief Regista uma referência de um objecto para outro.
@@ -57,7 +57,7 @@ void *gc_alocar(GC *gc, size_t tamanho_heap);
  * @param para Apontador para o objecto de destino.
  * @return 0 em caso de sucesso, negativo em caso de falha.
  */
-int gc_registar_referencia(GC *gc, void *de, void *para);
+int gc_registar_referencia(gc_t *gc, void *de, void *para);
 
 /**
  * @brief Remove uma referência de um objecto para outro.
@@ -68,14 +68,14 @@ int gc_registar_referencia(GC *gc, void *de, void *para);
  * @param gc Apontador para o  coletor de lixo a ser usado.
  * @return Numero de bytes libertados.
  */
-size_t gc_coletar(GC *gc);
+size_t gc_coletar(gc_t *gc);
 
 /**
  * @brief Liberta todos os recursos do garbage collector
  *
  * @param gc Apontador para o  coletor de lixo a ser usado.
  */
-void gc_finalizar(GC *gc);
+void gc_finalizar(gc_t *gc);
 
 /**
  * @brief Regista uma raiz para o algoritmo de marcação.
@@ -88,7 +88,7 @@ void gc_finalizar(GC *gc);
  * @param raiz Apontador para a raiz a ser registada.
  * @return 0 em caso de sucesso, negativo em caso de erro.
  */
-int gc_registar_raiz(GC *gc, void *raiz);
+int gc_registar_raiz(gc_t *gc, void *raiz);
 
 /**
  * @brief Remove uma raiz do registo do coletor de lixo.
@@ -97,7 +97,7 @@ int gc_registar_raiz(GC *gc, void *raiz);
  * @param raiz Apontador para a raiz a ser removida.
  * @return 0 em caso de sucesso, negativo em caso de erro.
  */
-int gc_remover_raiz(GC *gc, void *raiz);
+int gc_remover_raiz(gc_t *gc, void *raiz);
 
 /**
  * @brief Retorna estatisticas sobre o uso da memória.
@@ -110,7 +110,7 @@ int gc_remover_raiz(GC *gc, void *raiz);
  * @param num_objetos Apontador para onde será guardado o total de objectos.
  * @return 0 em caso de sucesso, negativo em caso de erro.
  */
-void gc_estatisticas(GC *gc, size_t *total_alocado, size_t *total_livre,
+void gc_estatisticas(gc_t *gc, size_t *total_alocado, size_t *total_livre,
                      size_t *num_objetos);
 
 #endif // !GC_H
