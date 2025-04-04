@@ -103,7 +103,7 @@ size_t gc_varrer(gc_t *gc);
  * @param dados Apontador para os dados de um objeto.
  * @return Apontador para um gc_object_t ou NULL se nao encontrado.
  */
-gc_object_t gc_encontrar_objeto(gc_t *gc, void *dados);
+gc_object_t *gc_encontrar_objeto(gc_t *gc, void *dados);
 
 /**
  * @brief Verifica se é necessario realizar coleta de lixo.
